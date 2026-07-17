@@ -1,79 +1,116 @@
 # Ramil Valiyev — Portfolio
 
-A personal portfolio site built with React, TypeScript, Vite, and SCSS.
+A modern, responsive portfolio website built with React, TypeScript, Vite, and SCSS to showcase my projects, technical skills, and professional experience.
 
 ## Stack
 
-- **React 19 + TypeScript** — component layer
-- **Vite** — dev server and build
-- **SCSS Modules** — scoped styling per component, shared tokens in `src/styles`
-- **Framer Motion** — scroll reveals and micro-interactions
-- **lucide-react** — icon set (GitHub/LinkedIn marks are hand-drawn in `src/components/ui/BrandIcon`, since lucide no longer ships brand glyphs)
-- **@fontsource** — Inter and JetBrains Mono are self-hosted, no external font requests at runtime
+* **React 19 + TypeScript** — component-based architecture with type safety
+* **Vite** — fast development server and optimized production builds
+* **SCSS Modules** — scoped component styling with shared design tokens
+* **Framer Motion** — animations, transitions, and scroll-based interactions
+* **lucide-react** — modern icon library
+* **@fontsource** — self-hosted Inter and JetBrains Mono fonts
+* **ESLint** — code quality and consistency
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev       # local dev server
-npm run build     # type-check + production build to dist/
+npm run dev       # start the development server
+npm run build     # create a production build
 npm run preview   # preview the production build locally
+npm run lint      # run ESLint
 ```
 
 ## Project structure
 
-```
+```text
 src/
-  data/content.ts        ← all resume/profile content lives here — edit this file only
-                            to update copy, skills, projects, or timeline entries
-  types/                 ← shared TypeScript interfaces for the content above
-  styles/
-    _tokens.scss          design tokens (breakpoints, motion, layout — static SCSS)
-    _mixins.scss          shared mixins (container, focus ring, responsive helper)
-    global.scss           CSS custom properties (color, type, shadow) + resets
-  hooks/
-    useActiveSection.ts   IntersectionObserver hook powering the nav's active state
+  assets/                 Images, icons, and static assets
   components/
-    layout/                Navbar, Footer, Background, Section (page chrome)
-    ui/                     Button, Tag, Reveal, BrandIcon (shared primitives)
-    sections/               One folder per page section (Hero, About, Experience,
-                             Skills, Projects, Technologies, Timeline, Contact)
+    layout/               Layout components (Navbar, Footer, Background)
+    sections/             Portfolio sections (Hero, About, Skills, Projects...)
+    ui/                   Shared UI components
+  data/
+    content.ts            Portfolio content (projects, experience, skills, etc.)
+  hooks/                  Custom React hooks
+  styles/
+    _tokens.scss          Design tokens
+    _mixins.scss          Shared SCSS mixins
+    global.scss           Global styles and CSS variables
+  types/                  Shared TypeScript types
+  App.tsx
+  main.tsx
 ```
 
-Each component's SCSS lives next to it as a `.module.scss` file, scoped
-automatically by Vite — class name collisions between components aren't
-possible.
+Every component keeps its own `.module.scss` stylesheet, ensuring styles remain isolated and preventing class name conflicts.
 
 ## Editing content
 
-Everything text-based — name, bio, skills, projects, timeline — is centralized
-in `src/data/content.ts`. You shouldn't need to touch component files to
-update copy.
+Most portfolio content is centralized in:
 
-**One thing to note:** exact start/end years for the education entries in
-`timeline` weren't provided in the original brief, so they currently render
-as "Completed" placeholders. Update the `period` field for the `bachelor`
-and `master` entries with real dates before publishing.
+```text
+src/data/content.ts
+```
+
+From this file you can update:
+
+* Personal information
+* About section
+* Skills
+* Experience
+* Projects
+* Education
+* Timeline
+* Contact information
+
+without modifying any UI components.
 
 ## Design system
 
-Colors, spacing, and type are defined once as CSS custom properties in
-`src/styles/global.scss` (`--color-*`, `--font-*`, `--gradient-*`) and
-referenced the same way from every component — so a palette or type change
-only has to happen in one place.
+The project uses SCSS Modules together with global design tokens.
 
-## Deploying
+Colors, typography, spacing, shadows, and reusable variables are defined in:
 
-`npm run build` outputs a static site to `dist/` — deploy it to Vercel,
-Netlify, Cloudflare Pages, GitHub Pages, or any static host.
+```text
+src/styles/global.scss
+```
 
-## Before publishing
+Shared mixins and reusable styling utilities are available inside:
 
-- Replace `https://ramilvaliyev.dev/` with the real domain in `index.html`
-  (canonical link, Open Graph, Twitter, JSON-LD) and in
-  `public/robots.txt` / `public/sitemap.xml`.
-- Fill in real dates for the two education entries in
-  `src/data/content.ts` (`timeline.bachelor` / `timeline.master`) —
-  they currently render as "Completed" placeholders.
-- Consider adding a proper Open Graph image (`og:image`) once you have
-  a screenshot or brand asset to point it at.
+```text
+src/styles/_mixins.scss
+```
+
+Design tokens are maintained in:
+
+```text
+src/styles/_tokens.scss
+```
+
+## Features
+
+* Responsive design
+* Modern UI/UX
+* Smooth animations
+* Component-based architecture
+* Type-safe development
+* Fast build performance
+* SEO-friendly structure
+* Easily maintainable content
+
+## Future improvements
+
+* Add a custom domain
+* Add downloadable résumé
+* Improve SEO metadata
+* Add blog section
+* Add multi-language support
+* Integrate a contact form backend
+
+## Author
+
+**Ramil Valiyev**
+
+* GitHub: https://github.com/ramilvl
+* LinkedIn: https://www.linkedin.com/in/ramil-valiyev/
