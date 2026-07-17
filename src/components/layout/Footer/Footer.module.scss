@@ -1,0 +1,34 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.footer {
+  padding-block: 2rem;
+}
+
+.inner {
+  @include m.container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copy {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  transition: color t.$dur-base t.$ease-out;
+  @include m.focus-ring;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}

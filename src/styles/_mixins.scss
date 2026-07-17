@@ -1,0 +1,47 @@
+@use 'tokens' as t;
+
+// Constrains content to the page's max width with responsive gutters.
+@mixin container {
+  width: 100%;
+  max-width: t.$max-width;
+  margin-inline: auto;
+  padding-inline: t.$gutter;
+}
+
+// Visible, brand-colored focus ring. Never remove focus outlines outright.
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@mixin mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+// Small caps-style eyebrow label used above section headings.
+@mixin eyebrow {
+  @include mono;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+@mixin respond($bp) {
+  @if $bp == xl { @media (max-width: t.$bp-xl) { @content; } }
+  @if $bp == lg { @media (max-width: t.$bp-lg) { @content; } }
+  @if $bp == md { @media (max-width: t.$bp-md) { @content; } }
+  @if $bp == sm { @media (max-width: t.$bp-sm) { @content; } }
+  @if $bp == xs { @media (max-width: t.$bp-xs) { @content; } }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

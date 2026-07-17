@@ -1,0 +1,96 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+
+  @include m.respond(md) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.rail {
+  position: sticky;
+  top: 6.5rem;
+  align-self: start;
+
+  @include m.respond(md) {
+    position: static;
+  }
+}
+
+.eyebrow {
+  @include m.eyebrow;
+  margin-bottom: 2rem;
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.factLabel {
+  @include m.mono;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+}
+
+.factValue {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.languages {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.langNote {
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.prose {
+  max-width: 640px;
+}
+
+.lede {
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.paragraph {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}

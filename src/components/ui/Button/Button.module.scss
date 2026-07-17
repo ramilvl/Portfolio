@@ -1,0 +1,102 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3rem;
+  padding-inline: 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform t.$dur-base t.$ease-out, border-color t.$dur-base t.$ease-out,
+    box-shadow t.$dur-base t.$ease-out;
+  @include m.focus-ring;
+
+  &:active {
+    transform: translateY(1px) scale(0.99);
+  }
+}
+
+.icon {
+  display: inline-flex;
+  transition: transform t.$dur-base t.$ease-out;
+}
+
+.iconLeft {
+  order: -1;
+}
+
+.button:hover .icon {
+  transform: translateX(3px);
+}
+
+.iconLeft.icon,
+.button:hover .iconLeft {
+  transform: translateX(0);
+}
+
+// ---- Primary: brand gradient with a sheen that sweeps across on hover ----
+.primary {
+  color: #f8fafc;
+  background: var(--gradient-brand);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 24px -10px rgba(0, 87, 184, 0.6);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.25) 45%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform t.$dur-slow t.$ease-out;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset, 0 12px 28px -8px rgba(0, 87, 184, 0.75);
+    transform: translateY(-1px);
+  }
+
+  &:hover::before {
+    transform: translateX(120%);
+  }
+}
+
+// ---- Secondary: quiet outline that lights up on hover ----
+.secondary {
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+
+  &:hover {
+    border-color: var(--color-accent);
+    background: var(--color-surface-hover);
+    transform: translateY(-1px);
+  }
+}
+
+// ---- Ghost: text-only, used inline / in nav ----
+.ghost {
+  color: var(--color-text-muted);
+  height: auto;
+  padding: 0;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+@include m.reduced-motion {
+  .button,
+  .icon,
+  .primary::before {
+    transition: none;
+  }
+}

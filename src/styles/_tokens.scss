@@ -1,0 +1,24 @@
+// ---------------------------------------------------------------------------
+// Design tokens
+// Static SCSS values used inside mixins / media queries (not needed at
+// runtime as CSS custom properties). Color + spacing live as CSS variables
+// in global.scss so they can be referenced identically from every module.
+// ---------------------------------------------------------------------------
+
+// Breakpoints (desktop-first: max-width queries)
+$bp-xl: 1440px;
+$bp-lg: 1200px;
+$bp-md: 960px;
+$bp-sm: 680px;
+$bp-xs: 420px;
+
+// Motion
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+$dur-fast: 0.18s;
+$dur-base: 0.32s;
+$dur-slow: 0.6s;
+
+// Layout
+$max-width: 1280px;
+$gutter: clamp(1.5rem, 5vw, 6rem);

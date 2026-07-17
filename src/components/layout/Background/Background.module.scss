@@ -1,0 +1,83 @@
+@use '../../../styles/mixins' as m;
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 70%);
+  opacity: 0.5;
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.32;
+  will-change: transform;
+}
+
+.glowOne {
+  top: -10%;
+  left: 8%;
+  width: 46vw;
+  height: 46vw;
+  background: radial-gradient(circle, #0057b8 0%, transparent 70%);
+  animation: drift-one 34s ease-in-out infinite;
+}
+
+.glowTwo {
+  top: 30%;
+  right: -8%;
+  width: 38vw;
+  height: 38vw;
+  background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+  opacity: 0.2;
+  animation: drift-two 40s ease-in-out infinite;
+}
+
+.glowThree {
+  bottom: -12%;
+  left: 30%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, #0b3d91 0%, transparent 72%);
+  opacity: 0.28;
+  animation: drift-three 46s ease-in-out infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 0%, transparent 40%, var(--color-bg) 100%);
+}
+
+@keyframes drift-one {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 6%) scale(1.08); }
+}
+
+@keyframes drift-two {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6%, 4%) scale(1.05); }
+}
+
+@keyframes drift-three {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, -5%) scale(1.1); }
+}
+
+@include m.reduced-motion {
+  .glow {
+    animation: none;
+  }
+}

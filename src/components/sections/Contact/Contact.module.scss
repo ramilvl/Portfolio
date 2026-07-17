@@ -1,0 +1,107 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  @include m.eyebrow;
+}
+
+.heading {
+  margin-top: 0.875rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.subtext {
+  margin-top: 0.875rem;
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+}
+
+.emailRow {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.emailLink {
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: opacity t.$dur-base t.$ease-out;
+  @include m.focus-ring;
+
+  &:hover {
+    opacity: 0.82;
+  }
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: border-color t.$dur-base t.$ease-out, color t.$dur-base t.$ease-out;
+  @include m.focus-ring;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+}
+
+.footer {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.location {
+  @include m.mono;
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: color t.$dur-base t.$ease-out;
+  @include m.focus-ring;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
